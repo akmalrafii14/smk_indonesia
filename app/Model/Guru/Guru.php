@@ -2,6 +2,7 @@
 
 namespace App\Model\Guru;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Guru extends Model
@@ -16,4 +17,9 @@ class Guru extends Model
     {
         return $this->belongsTo(Prodi::class, 'prodi', 'id'); //field prodi ambil dari tb_guru, id ambil di tb_mapel
     }
+
+    // public function DataLengkap()
+    // {
+    //     return $this->belongsTo(User::class, 'id');
+    // }
 }

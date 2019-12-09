@@ -149,7 +149,7 @@
                         Sekolah</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="/datasiswa">Data Siswa</a>
+                            <a href="{{URL('guru/datasiswa')}}">Data Siswa</a>
                         </li>
                     </ul>
                 </li>

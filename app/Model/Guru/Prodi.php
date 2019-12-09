@@ -10,6 +10,6 @@ class Prodi extends Model
 
     public function Daftarjurusan()
     {
-        return $this->belongsTo('App\Model\Guru\Guru', 'id');
+        return $this->belongsTo(Guru::class, 'id');
     }
 }

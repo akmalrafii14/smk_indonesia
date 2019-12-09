@@ -21,7 +21,7 @@
                                     <div class="col-sm-10">
                                         <h3>Jumlah Siswa yang Terdaftar</h3>
                                         <p>{{$getSiswa->count()}} Siswa</p>
-                                    <a href="{{URL('/guru/datasiswa')}}">
+                                    <a href="{{URL('guru/datasiswa')}}">
                                                 <button type="button" class="btn btn-primary">Lihat Data Siswa</button>
                                         </a>
                                     </div>

@@ -268,6 +268,26 @@ class HomeController extends Controller
         return view('guru/guruDataSiswa', \compact('getSiswa'));
     }
 
+    public function guruCariDataSiswa(Request $request)
+    {
+        $search = $request->search;
+
+        $datasiswa = Siswa::where('nama_siswa', 'like', "%" . $search . "%")->orWhere('nis', 'like', "%" . $search . "%")->get();
+
+        return view('guru/guruDataSiswa', ['datasiswa' => $datasiswa]);
+
+        // dd(request()->all());
+    }
+
+    public function guruInputNilai($id)
+    {
+        $datasiswa = Siswa::find($id);
+        $getGuruEmail = Auth::user()->email;
+        $dataguru = Guru::where('email', 'like', "%" . $getGuruEmail . "%")->first();
+        return view('guru/nilai/inputnilai', \compact('datasiswa', 'dataguru'));
+    }
+
+
     // Siswa
 
     public function siswaHome()

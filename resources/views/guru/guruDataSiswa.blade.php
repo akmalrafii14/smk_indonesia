@@ -10,12 +10,12 @@
                 <h3>Hello, {{ Auth::user()->name }}</h3>
                 <p>Data Siswa</p>
                 <div class="row search-bar pb-3 pl-3">
-                    <form class="form-inline my-2 my-lg-0" action="{{URL('datasiswa/cari')}}" method="GET">
+                    <form class="form-inline my-2 my-lg-0" action="{{URL('gurudatasiswa/cari')}}" method="GET">
                         <input class="form-control mr-sm-2" type="search" placeholder="Cari Data Siswa"
                             aria-label="Search" name="search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
                     </form>
-                </div> 
+                </div>
 
                 <table class="table table-hover">
                     <thead>
@@ -49,8 +49,9 @@
                                         data-target="#exampleModalDataSiswa{{$data->nis}}">
                                         Lihat Detail
                                     </button>
-                                    <a href="admin/updatesiswa/{{$data->id}}"><button type="submit"
-                                        class="btn btn-primary">Tambahkan Nilai</button></a>
+                                    <a href="/guru/inputnilai/{{$data->id}}"><button type="submit"
+                                            class="btn btn-primary">Tambahkan
+                                            Nilai</button></a>
                                     &nbsp;
 
                                     <!-- Modal -->
@@ -59,7 +60,8 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Data Siswa : {{$data->nama_siswa}}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Data Siswa :
+                                                        {{$data->nama_siswa}}</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -140,7 +142,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close</button>
-                                                    <a href="admin/updatesiswa/{{$data->id}}"><button type="submit"
+                                                    <a href="guru/tambahnilai/{{$data->id}}"><button type="submit"
                                                             class="btn btn-primary">Tambahkan Nilai</button></a>
 
 
