@@ -110,6 +110,17 @@
 
                                                     <div class="form-group row">
                                                         <label for="nama"
+                                                            class="col-md-5 align-right">{{ __('Nilai Ulangan Harian') }}</label>
+                                                        <label for="" class="col-md-1">:</label>
+
+                                                        <div class="col-md-6">
+                                                            {{$data->jenis_kelamin}}
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row">
+                                                        <label for="nama"
                                                             class="col-md-5 align-right">{{ __('Alamat') }}</label>
                                                         <label for="" class="col-md-1">:</label>
 

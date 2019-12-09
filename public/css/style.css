@@ -37,12 +37,13 @@ body {
 }
 
 #sidebar {
-    background: #2980b9;
-    color: white;
+    background: white;
+    color: #2980b9;
     min-height: 100vh;
     min-width: 250px;
     max-width: 250px;
     transition: all 0.3s;
+    border-left: solid 12px #3498db;
 }
 
 #sidebar .for-inputdata {
@@ -51,7 +52,7 @@ body {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #3498db;
+    background: white;
 }
 
 #sidebar ul.components {
@@ -60,7 +61,7 @@ body {
 }
 
 #sidebar ul p {
-    color: white;
+    color: #424242;
     padding: 10px;
 }
 
@@ -71,14 +72,14 @@ body {
 }
 
 #sidebar ul li a:hover {
-    color: #3498db;
-    background: white;
+    color: white;
+    background: #3498db;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: white;
-    background: #3498db;
+    color: #3498db;
+    background: white;
 }
 
 
@@ -89,7 +90,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #3498db;
+    background: white;
 }
 
 .second-dropdown ul ul a {

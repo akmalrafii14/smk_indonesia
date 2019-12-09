@@ -4,6 +4,7 @@ namespace App\Model\Siswa;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Siswa\Jurusan;
+use App\Model\Guru\Nilai;
 
 class Siswa extends Model
 {
@@ -16,5 +17,10 @@ class Siswa extends Model
     public function jurusanSiswa()
     {
         return $this->belongsTo(Jurusan::class, 'jurusan', 'id_jurusan');
+    }
+
+    public function nilaiAkhir()
+    {
+        return $this->belongsTo(Nilai::class);
     }
 }

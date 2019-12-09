@@ -90,7 +90,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                <p style="color: #424242;">Lorem ipsum dolor sit amet consectetur.</p>
                 <li>
                     <a href="{{route('admin.home')}}">Home</a>
                 </li>

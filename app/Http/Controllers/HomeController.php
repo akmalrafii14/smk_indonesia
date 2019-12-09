@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Model\Guru\Guru;
+use App\Model\Guru\Nilai;
 use Illuminate\Http\Request;
 use App\Model\Siswa\Siswa;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Alert;
+// use Alert;
 use App\User;
 
 class HomeController extends Controller
@@ -285,6 +286,40 @@ class HomeController extends Controller
         $getGuruEmail = Auth::user()->email;
         $dataguru = Guru::where('email', 'like', "%" . $getGuruEmail . "%")->first();
         return view('guru/nilai/inputnilai', \compact('datasiswa', 'dataguru'));
+    }
+
+    public function guruInsertNilai(Request $request)
+    {
+        $nilaiuh = $request->uh;
+        $nilaiuts = $request->uts;
+        $nilaiuas = $request->uas;
+
+        $totalnilai = ($nilaiuh + $nilaiuts + $nilaiuas) / 3;
+
+        $this->validate($request, [
+            'nis' => 'required',
+            'nip' => 'required',
+            'mapel' => 'required',
+            'uh' => 'required',
+            'uts' => 'required',
+            'uas' => 'required'
+        ]);
+
+        Nilai::create([
+            'nis_siswa' => $request->nis,
+            'nip_guru' => $request->nip,
+            'id_mapel' => $request->mapel,
+            'uh' => $request->uh,
+            'uts' => $request->uts,
+            'uas' => $request->uas,
+            'akhir' => $totalnilai
+        ]);
+
+        // $getDataSiswa = Siswa::find($id);
+        // $getDataSiswa->status_nilai = 1;
+        // $getDataSiswa->save();
+
+        return redirect('guru/datasiswa');
     }
 
 
