@@ -168,6 +168,32 @@
                 </li>
             </ul>
         </nav>
+        @elseif(auth()->user()->role == 3)
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>SMK Indonesia</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                <li>
+                    <a href="{{route('siswa.home')}}">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </nav>
         @endif
         <div id="content">
             <main class="py-4">

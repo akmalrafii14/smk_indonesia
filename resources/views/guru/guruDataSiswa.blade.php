@@ -19,6 +19,9 @@
 
                 <table class="table table-hover">
                     <thead>
+                        {{-- @foreach ($getStatusNilai as $item)
+                                {{$item->check_nilai}}
+                        @endforeach --}}
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">NIS</th>
@@ -49,9 +52,22 @@
                                         data-target="#exampleModalDataSiswa{{$data->nis}}">
                                         Lihat Detail
                                     </button>
+
+
+                                    @foreach ($getStatusNilai as $item)
+                                    {{-- {{$item->check_nilai}} --}}
+
+
+                                    {{-- @if($item->nis_siswa == $data->nis) --}}
+                                    @if($item->check_nilai == 1 && $item->nis_siswa == $data->nis && $item->nip_guru == $dataguru->nip)
+                                    <a href="/guru/updatenilai/{{$data->id}}"><button type="submit"
+                                            class="btn btn-primary">Edit Nilai</button></a>
+                                    @else
                                     <a href="/guru/inputnilai/{{$data->id}}"><button type="submit"
-                                            class="btn btn-primary">Tambahkan
-                                            Nilai</button></a>
+                                            class="btn btn-primary">Tambah Nilai</button></a>
+                                    @endif
+
+
                                     &nbsp;
 
                                     <!-- Modal -->
@@ -110,17 +126,6 @@
 
                                                     <div class="form-group row">
                                                         <label for="nama"
-                                                            class="col-md-5 align-right">{{ __('Nilai Ulangan Harian') }}</label>
-                                                        <label for="" class="col-md-1">:</label>
-
-                                                        <div class="col-md-6">
-                                                            {{$data->jenis_kelamin}}
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="form-group row">
-                                                        <label for="nama"
                                                             class="col-md-5 align-right">{{ __('Alamat') }}</label>
                                                         <label for="" class="col-md-1">:</label>
 
@@ -149,12 +154,79 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group row">
+                                                        <label for="nama"
+                                                            class="col-md-5 align-right">{{ __('Ulangan Harian') }}</label>
+                                                        <label for="" class="col-md-1">:</label>
+
+                                                        <div class="col-md-6">
+                                                            @if ($item->uh != "" && $item->nis_siswa == $data->nis &&
+                                                            $item->nip_guru == $dataguru->nip)
+                                                            {{$item->uh}}
+                                                            @else
+                                                            Data belum dimasukkan
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="nama"
+                                                            class="col-md-5 align-right">{{ __('Ulangan Tengah Semester') }}</label>
+                                                        <label for="" class="col-md-1">:</label>
+
+                                                        <div class="col-md-6">
+                                                            @if ($item->uts != "" && $item->nis_siswa == $data->nis &&
+                                                            $item->nip_guru == $dataguru->nip)
+                                                            {{$item->uts}}
+                                                            @else
+                                                            Data belum dimasukkan
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="nama"
+                                                            class="col-md-5 align-right">{{ __('Ulangan Akhir Semester') }}</label>
+                                                        <label for="" class="col-md-1">:</label>
+
+                                                        <div class="col-md-6">
+                                                            @if ($item->uas != "" && $item->nis_siswa == $data->nis &&
+                                                            $item->nip_guru == $dataguru->nip)
+                                                            {{$item->uas}}
+                                                            @else
+                                                            Data belum dimasukkan
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                            <label for="nama"
+                                                                class="col-md-5 align-right">{{ __('Rata-rata Nilai') }}</label>
+                                                            <label for="" class="col-md-1">:</label>
+    
+                                                            <div class="col-md-6">
+                                                                @if ($item->akhir != "" && $item->nis_siswa == $data->nis &&
+                                                                $item->nip_guru == $dataguru->nip)
+                                                                {{$item->akhir}}
+                                                                @else
+                                                                Data belum dimasukkan
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close</button>
-                                                    <a href="guru/tambahnilai/{{$data->id}}"><button type="submit"
-                                                            class="btn btn-primary">Tambahkan Nilai</button></a>
+                                                    @if($item->nis_siswa == $data->nis && $item->nip_guru == $dataguru->nip && $item->check_nilai == 1)
+                                                    <a href="/guru/updatenilai/{{$data->id}}"><button type="submit"
+                                                            class="btn btn-primary">Edit Nilai</button></a>
+                                                    @else
+                                                    <a href="/guru/inputnilai/{{$data->id}}"><button type="submit"
+                                                            class="btn btn-primary">Tambah Nilai</button></a>
+                                                    @endif
+                                                    @endforeach
+
 
 
                                                 </div>

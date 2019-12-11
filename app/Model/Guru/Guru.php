@@ -3,6 +3,7 @@
 namespace App\Model\Guru;
 
 use App\User;
+use App\Model\Guru\Nilai;
 use Illuminate\Database\Eloquent\Model;
 
 class Guru extends Model
@@ -16,6 +17,11 @@ class Guru extends Model
     public function ProdiGuru()
     {
         return $this->belongsTo(Prodi::class, 'prodi', 'id'); //field prodi ambil dari tb_guru, id ambil di tb_mapel
+    }
+
+    public function NilaiMurid()
+    {
+        return $this->belongsTo(Nilai::class);
     }
 
     // public function DataLengkap()

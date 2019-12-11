@@ -1,22 +1,18 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    Hello Siswa
-                    
-                </div>
+<div id="content">
+    <div class="container py-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Hello, {{ Auth::user()->name }}</h3>
+                <p>What do you wanted to do today?</p>
+                @foreach ($datasiswa as $data)
+            <a href="/siswa/nilai/{{$data->nis}}">Lihat nilai</a>
+                @endforeach
+            
+
             </div>
         </div>
     </div>

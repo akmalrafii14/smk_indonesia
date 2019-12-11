@@ -6,6 +6,7 @@ use App\Model\Guru\Guru;
 use App\Model\Guru\Nilai;
 use Illuminate\Http\Request;
 use App\Model\Siswa\Siswa;
+use App\Model\Siswa\Mapel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -265,8 +266,11 @@ class HomeController extends Controller
     public function guruViewSiswa()
     {
         $getSiswa = Siswa::all();
+        $getStatusNilai = Nilai::all();
+        $getGuruEmail = Auth::user()->email;
+        $dataguru = Guru::where('email', 'like', "%" . $getGuruEmail . "%")->first();
 
-        return view('guru/guruDataSiswa', \compact('getSiswa'));
+        return view('guru/guruDataSiswa', \compact('getSiswa', 'getStatusNilai', 'dataguru'));
     }
 
     public function guruCariDataSiswa(Request $request)
@@ -312,7 +316,8 @@ class HomeController extends Controller
             'uh' => $request->uh,
             'uts' => $request->uts,
             'uas' => $request->uas,
-            'akhir' => $totalnilai
+            'akhir' => $totalnilai,
+            'check_nilai' => 1
         ]);
 
         // $getDataSiswa = Siswa::find($id);
@@ -322,12 +327,39 @@ class HomeController extends Controller
         return redirect('guru/datasiswa');
     }
 
+    public function guruUpdateNilai($id)
+    {
+        // $datasiswa = Siswa::find($id);
+        // $getGuruEmail = Auth::user()->email;
+        // $dataguru = Guru::where('email', 'like', "%" . $getGuruEmail . "%")->first();
+        // $datanilai = Nilai::where('nis', 'like' . $datasiswa->nis);
+        // $datanilaiguru = Guru::where('nip' . $dataguru->nip);
+        // return view('guru/nilai/updatenilai', \compact('datasiswa', 'dataguru', 'datanilai', 'datanilaiguru'));
+
+        $datasiswa = Siswa::find($id);
+        $getGuruEmail = Auth::user()->email;
+        $dataguru = Guru::where('email', 'like', "%" . $getGuruEmail . "%")->first();
+        return view('guru/nilai/updatenilai', \compact('datasiswa', 'dataguru'));
+    }
+
 
     // Siswa
 
     public function siswaHome()
     {
+        $getSiswaEmail = Auth::user()->email;
+        $datasiswa = Siswa::where('email', 'like', "%" . $getSiswaEmail . "%")->get();
+        return view('../siswa/siswaHome', \compact('datasiswa'));
+    }
 
-        return view('../siswa/siswaHome');
+    public function tampilNilaiSiswa($nis)
+    {
+        $getSiswaEmail = Auth::user()->email;
+        $datasiswa = Siswa::where('email', 'like', "%" . $getSiswaEmail . "%")->get();
+        // $getnis = Siswa::where('nis', 'like', "%" . $getSiswaEmail . "%")->first();
+        $datanilai = Nilai::all();
+        $getnis = Siswa::all();
+        $datamapel = Mapel::all();
+        return view('../siswa/nilaisiswa', compact('datasiswa', 'datamapel', 'datanilai'));
     }
 }

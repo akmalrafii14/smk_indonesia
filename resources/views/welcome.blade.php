@@ -85,7 +85,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Laravel
+                SMK Indonesia
             </div>
 
             <div class="links">

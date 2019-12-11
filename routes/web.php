@@ -51,6 +51,9 @@ Route::get('guru/datasiswa', 'HomeController@guruViewSiswa')->middleware('role')
 Route::get('gurudatasiswa/cari', 'HomeController@guruCariDataSiswa')->middleware('role');
 Route::get('guru/inputnilai/{id}', 'HomeController@guruInputNilai')->name('input.nilai')->middleware('role');
 Route::post('guru/insertnilai', 'HomeController@guruInsertNilai')->name('inputnilai')->middleware('role');
+Route::get('guru/updatenilai/{id}', 'HomeController@guruUpdateNilai')->middleware('role');
+
 //Siswa
 
 Route::get('siswa/home', 'HomeController@siswaHome')->name('siswa.home')->middleware('role');
+Route::get('siswa/nilai/{nis}', 'HomeController@tampilNilaiSiswa')->middleware('role');

@@ -5,6 +5,7 @@ namespace App\Model\Siswa;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Siswa\Jurusan;
 use App\Model\Guru\Nilai;
+use App\Model\Siswa\Mapel;
 
 class Siswa extends Model
 {
@@ -19,8 +20,13 @@ class Siswa extends Model
         return $this->belongsTo(Jurusan::class, 'jurusan', 'id_jurusan');
     }
 
-    public function nilaiAkhir()
+    public function NilaiSiswa()
     {
-        return $this->belongsTo(Nilai::class);
+        return $this->belongsTo(Nilai::class, 'nis', 'nis_siswa');
+    }
+
+    public function NamaMapel()
+    {
+        return $this->belongsTo(Mapel::class, 'id_mapel', 'id');
     }
 }
