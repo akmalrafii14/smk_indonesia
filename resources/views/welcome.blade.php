@@ -15,11 +15,13 @@
         html,
         body {
             background-color: #fff;
-            color: #636b6f;
+            color: white;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;
             margin: 0;
+            background: rgb(183,183,255);
+background: linear-gradient(45deg, rgba(183,183,255,1) 35%, rgba(45,34,233,1) 100%);
         }
 
         .full-height {
@@ -51,10 +53,10 @@
         }
 
         .links>a {
-            color: #636b6f;
+            color: white;
             padding: 0 25px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 800;
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;

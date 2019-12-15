@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Siswa\Jurusan;
 use App\Model\Guru\Nilai;
 use App\Model\Siswa\Mapel;
+use App\Model\Siswa\DaftarNilai;
 
 class Siswa extends Model
 {
@@ -20,7 +21,7 @@ class Siswa extends Model
         return $this->belongsTo(Jurusan::class, 'jurusan', 'id_jurusan');
     }
 
-    public function NilaiSiswa()
+    public function Nilai()
     {
         return $this->belongsTo(Nilai::class, 'nis', 'nis_siswa');
     }

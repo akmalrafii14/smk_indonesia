@@ -13,14 +13,9 @@ class Nilai extends Model
         'nis_siswa', 'nip_guru', 'id_mapel', 'uh', 'uts', 'uas', 'akhir', 'check_nilai'
     ];
 
-    public function DataNilai()
-    {
-        return $this->belongsTo(Nilai::class);
-    }
-
     public function DataSiswa()
     {
-        return $this->belongsTo(Siswa::class, 'nis_siswa', 'nis');
+        return $this->hasMany(Siswa::class, 'nis_siswa', 'nis');
     }
 
     public function DataGuru()

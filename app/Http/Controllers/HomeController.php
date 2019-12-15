@@ -348,8 +348,9 @@ class HomeController extends Controller
     public function siswaHome()
     {
         $getSiswaEmail = Auth::user()->email;
+        $datanilai = Nilai::all();
         $datasiswa = Siswa::where('email', 'like', "%" . $getSiswaEmail . "%")->get();
-        return view('../siswa/siswaHome', \compact('datasiswa'));
+        return view('../siswa/siswaHome', \compact('datasiswa', 'datanilai'));
     }
 
     public function tampilNilaiSiswa($nis)
